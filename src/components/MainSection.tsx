@@ -11,7 +11,7 @@ const MainSection = () => {
         <p>Once safe place for all your important notes.</p>
       </div>
       <div>
-        <CtaButton>
+        <CtaButton className=''>
           Login
         </CtaButton>
       </div>
