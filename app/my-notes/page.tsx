@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import { HiOutlinePlus } from "react-icons/hi";
-import CtaButton from '@/components/CtaButton';
-import Accordion from '@/components/Accordion';
-import useFetchNotes from '@/libs/queries/useFetchNotes';
+import CtaButton from '../../components/CtaButton';
+import Accordion from '../../components/Accordion';
+import useFetchNotes from '../../libs/queries/useFetchNotes';
 
 const items = [
   {
@@ -27,9 +27,7 @@ const items = [
 ];
 
 const MyNotes = () => {
-  const response = useFetchNotes();
-
-  console.log(response)
+  const { data: notes, isLoading, isFetching } = useFetchNotes();
 
   return (
     <section className='h-full w-full py-8 flex flex-col gap-5'>

@@ -6,7 +6,7 @@ const useFetchNotes = () => {
         queryKey: ["notes"],
         queryFn: async () => {
             const response = await api.get("/notes");
-            return response;
+            return response?.data;
         }
     })
 
