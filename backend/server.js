@@ -3,8 +3,11 @@ const app = express();
 const cors = require("cors");
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
+const connectWithDB = require("./config/dbConfig");
 
 dotenv.config();
+connectWithDB();
+
 const PORT = process.env.PORT || 5000;
 
 const CORSOptions = {

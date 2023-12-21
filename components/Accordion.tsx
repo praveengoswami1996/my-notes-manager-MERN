@@ -6,8 +6,9 @@ import React from 'react';
 
 interface AccordionItem {
     id: string;
-    label: string;
+    title: string;
     content: string;
+    category: string;
 }
 
 interface AccordionProps {
@@ -40,7 +41,7 @@ function Accordion({ items }: AccordionProps) {
           className="flex justify-between p-3 bg-gray-100 items-center cursor-pointer"
           onClick={() => handleClick(index)}
         >
-          {item.label}
+          {item.title}
           <div className='flex items-center justify-end gap-3'>
             <Link 
               href={`/my-notes/${item.id}`} 
@@ -58,7 +59,7 @@ function Accordion({ items }: AccordionProps) {
             </CtaButton>
           </div>
         </div>
-        {isExpanded && <div className="p-5">{item.content}</div>}
+        {isExpanded && <div className={`p-5 border border-t-0`}>{item.content}</div>}
       </div>
     );
   });

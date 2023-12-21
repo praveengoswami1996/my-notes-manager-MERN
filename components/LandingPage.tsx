@@ -3,7 +3,7 @@ import CtaButton from './CtaButton';
 
 const LandingPage = () => {
   return (
-    <section className="w-full h-full bg-landing-page bg-cover bg-center bg-no-repeat p-20 bg-yellow-200">
+    <section className="w-full h-full bg-landing-page bg-cover bg-center bg-no-repeat py-20">
       <div className='flex flex-col items-start gap-6'>
         <h1 className='text-6xl leading-snug text-black font-extrabold'>
           Welcome To<br/>My Notes Manager!

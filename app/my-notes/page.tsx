@@ -4,27 +4,7 @@ import { HiOutlinePlus } from "react-icons/hi";
 import CtaButton from '../../components/CtaButton';
 import Accordion from '../../components/Accordion';
 import useFetchNotes from '../../libs/queries/useFetchNotes';
-
-const items = [
-  {
-    id: '1',
-    label: 'Can I use React on a project?',
-    content:
-      'You can use React on any project you want. You can use React on any project you want. You can use React on any project you want. You can use React on any project you want.',
-  },
-  {
-    id: '2',
-    label: 'Can I use Javascript on a project?',
-    content:
-      'You can use React on any project you want. You can use React on any project you want. You can use React on any project you want. You can use React on any project you want.',
-  },
-  {
-    id: '3',
-    label: 'Can I use CSS on a project?',
-    content:
-      'You can use React on any project you want. You can use React on any project you want. You can use React on any project you want. You can use React on any project you want.',
-  },
-];
+import NotesLoader from 'core/Loaders/NotesLoader';
 
 const MyNotes = () => {
   const { data: notes, isLoading, isFetching } = useFetchNotes();
@@ -45,7 +25,13 @@ const MyNotes = () => {
           </span>
         </CtaButton>
 
-        <Accordion items={items}/>
+        {
+          isLoading ? (
+            <NotesLoader />
+          ): (
+            <Accordion items={notes}/>
+          )
+        }
       </div>
     </section>
   )
