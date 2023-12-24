@@ -1,5 +1,6 @@
 import React from 'react'
 import CtaButton from './CtaButton';
+import Link from 'next/link';
 
 const LandingPage = () => {
   return (
@@ -12,13 +13,17 @@ const LandingPage = () => {
       </div>
 
       <div className='mt-20 flex items-center justify-start gap-6'>
-          <CtaButton primary className='w-[150px]'>
-            Login
-          </CtaButton>
+          <Link href={"/login"}>
+            <CtaButton primary className='w-[150px]'>
+              Login
+            </CtaButton>
+          </Link>
 
-          <CtaButton primary outline className='w-[150px]'>
-            Signup
-          </CtaButton>
+          <Link href={"/register"}>
+            <CtaButton primary outline className='w-[150px]'>
+              Signup
+            </CtaButton>
+          </Link>
         </div>
     </section>
   )

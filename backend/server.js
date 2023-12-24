@@ -4,11 +4,12 @@ const notes = require("./data/notes");
 const dotenv = require("dotenv");
 const connectWithDB = require("./config/dbConfig");
 const userRoutes = require("./routes/userRoutes");
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 //Creating an express instance
 const app = express();
 
-//Configuring dotenv module
+//Configuring dotenv module so that we can access the environment variables throughout the application
 dotenv.config();
 
 //Connecting with MongoDB
@@ -41,7 +42,6 @@ app.use(express.json())
 app.use("/api/users", userRoutes);
 
 
-
 app.get("/", (req, res) => {
     res.send("API is running....")
 })
@@ -50,6 +50,8 @@ app.get("/api/notes", (req, res) => {
     res.json(notes);
 })
 
+app.use(notFound);
+app.use(errorHandler);
 
 //Creating basic server in node js using express
 app.listen(PORT, () => {
