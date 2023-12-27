@@ -18,7 +18,7 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
       <body className={inter.className}>
         <Header />
         <TanstackProvider>
-          <main className="h-[94vh] w-full bg-white px-20">
+          <main className="min-h-screen w-full bg-white px-20">
             { children }
           </main>
         </TanstackProvider>
