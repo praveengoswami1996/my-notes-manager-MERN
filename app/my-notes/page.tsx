@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { HiOutlinePlus } from "react-icons/hi";
-import CtaButton from '../../components/CtaButton';
+import CtaButton from '../../core/ui/CtaButton';
 import Accordion from '../../components/Accordion';
 import useFetchNotes from '../../libs/queries/useFetchNotes';
 import NotesLoader from 'core/Loaders/NotesLoader';

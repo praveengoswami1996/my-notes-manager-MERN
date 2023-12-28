@@ -1,5 +1,5 @@
 import React from 'react'
-import CtaButton from './CtaButton';
+import CtaButton from '../core/ui/CtaButton';
 import Link from 'next/link';
 
 const LandingPage = () => {

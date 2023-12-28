@@ -1,6 +1,6 @@
 "use client";
-import CtaButton from "@components/CtaButton";
-import InputField from "@components/InputField";
+import CtaButton from "core/ui/CtaButton";
+import InputField from "core/ui/InputField";
 import MainContainer from "@components/MainContainer";
 import Link from "next/link";
 import React from "react";

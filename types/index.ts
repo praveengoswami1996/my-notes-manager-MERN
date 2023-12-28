@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from "react";
 
 export type LoginFormValues = {
-    email : string
+    email: string
     password: string
 }
 

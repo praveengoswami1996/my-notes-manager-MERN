@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import CtaButton from './CtaButton';
+import CtaButton from '../core/ui/CtaButton';
 import Link from 'next/link';
 import React from 'react';
 

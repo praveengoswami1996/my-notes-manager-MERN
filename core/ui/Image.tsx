@@ -1,24 +1,25 @@
-// import { useEffect, useState } from 'react';
-// import NextImage from 'next/image';
+import React, { useEffect, useState } from 'react';
+import NextImage, { ImageProps } from 'next/image';
 
-// const Image = ({ src, alt}) => {
-//     const [image, setImage] = useState(src);
-//     const handleFallback = () => {
-//         setImage("/fallback-image.png");
-//     }
+const Image: React.FC<ImageProps> = ({ src, alt, ...rest}) => {
+    const [image, setImage] = useState(src);
+    const handleFallback = () => {
+        setImage("/avatar-placeholder.png");
+    }
 
-//     useEffect(() => {
-//         setImage(src);
-//     }, [src]);
+    useEffect(() => {
+        setImage(src);
+    }, [src]);
 
-//     return (
-//         <NextImage 
-//             src={image} 
-//             {...rest}
-//             onError={() => handleFallback()} 
-//         />
-//     )
+    return (
+        <NextImage 
+            src={image} 
+            alt={alt}
+            {...rest}
+            onError={() => handleFallback()} 
+        />
+    )
 
-// }
+}
 
-// export default Image;
+export default Image;
