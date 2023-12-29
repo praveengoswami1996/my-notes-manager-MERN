@@ -25,12 +25,15 @@ const registerUser = asyncHandler(async (request, response) => {
 
     if (user) {
         response.status(201).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            avatar: user.avatar,
-            token: generateToken(user._id),
+            success: true,
+            data : {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                avatar: user.avatar,
+                token: generateToken(user._id),
+            }
         })
     } else {
         response.status(400);
@@ -48,12 +51,15 @@ const loginUser = asyncHandler(async (request, response) => {
     //If user exists run below chunk of code otherwise run else block
     if (user && await user.matchPassword(password)) {
         response.status(200).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            avatar: user.avatar,
-            token: generateToken(user._id),
+            success: true,
+            data: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                avatar: user.avatar,
+                token: generateToken(user._id),
+            }
         })
     } else {
         response.status(401);

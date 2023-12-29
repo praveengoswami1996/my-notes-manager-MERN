@@ -6,12 +6,17 @@ import Link from "next/link";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { LoginFormValues } from "types";
+import useLogin from "libs/mutations/useLogin";
+import toast from "react-hot-toast";
+
 
 const LoginPage = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<LoginFormValues>({ mode: "all" });
 
-  const onSubmit = (formData: {}) => {
-    console.log(formData);
+  const { mutate: login, isPending } = useLogin();
+
+  const onSubmit = (formData: LoginFormValues) => {
+    login(formData);
   } 
 
   return (

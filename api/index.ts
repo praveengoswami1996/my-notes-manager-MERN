@@ -22,9 +22,4 @@ const api = axios.create({
 //   },
 // });
 
-export const showErrorMessage = (error) => {
-  const message = error?.response?.data?.message || error?.message || "Something went wrong";
-  toast.error(message);
-}
-
 export default api;
