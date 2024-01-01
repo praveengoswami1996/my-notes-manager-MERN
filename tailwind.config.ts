@@ -16,6 +16,9 @@ const config: Config = {
         primary: '#0081a7',
         secondary: '#028090',
       },
+      boxShadow: {
+        "box": "rgba(0, 0, 0, 0.15) 0px 2px 8px",
+      }
     },
   },
   plugins: [],

@@ -1,9 +1,12 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdEventNote } from "react-icons/md";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const [showMenuPopup, setShowMenuPopup] = useState<boolean>(false);
+
   return (
     <header className='px-20 py-10 h-20 bg-[#0081a7] flex items-center justify-between'>
       <Link href={"/"}>
@@ -29,13 +32,34 @@ const Header = () => {
         </Link>
 
         <div className='flex items-center justify-start gap-3'>
-          <div className='w-[36px] h-[36px] rounded-full overflow-hidden relative'>
-            <Image 
-              src="/user.png"
-              alt="User Avatar"
-              fill
-              className="object-cover"
-            />
+          <div className='relative'>
+            <button 
+              type='button'
+              onClick={() => setShowMenuPopup(!showMenuPopup)}
+              className='block rounded-full overflow-hidden relative'
+            >
+              <Image 
+                src="/user.png"
+                alt="User Avatar"
+                width={36}
+                height={36}
+                className='rounded-full'
+              />
+            </button>
+            {
+              showMenuPopup && (
+                <div className='w-[200px] h-[150px] rounded-xl bg-white absolute top-full right-3 mt-1 shadow-box transition-opacity duration-500'>
+                  <ul className='list-none'>
+                    <li>
+                      <Link href="#">My Profile</Link>
+                    </li>
+                    <li>
+                      <Link href="#">logout</Link>
+                    </li>
+                  </ul>
+                </div>
+              )
+            }
           </div>
           <div className='flex flex-col items-start'>
             <span className='text-lg font-bold text-white tracking-widest'>Praveen Goswami</span>

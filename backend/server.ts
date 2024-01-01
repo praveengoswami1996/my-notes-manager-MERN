@@ -1,10 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const notes = require("./data/notes");
-const dotenv = require("dotenv");
-const connectWithDB = require("./config/dbConfig");
-const userRoutes = require("./routes/userRoutes");
-const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+import { Request, Response } from "express";
+import express from "express"
+import cors from "cors";
+import notes from "./data/notes";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import connectWithDB from "./config/dbConfig";
+import userRoutes from "./routes/userRoutes";
+import { notFound, errorHandler } from "./middlewares/errorMiddleware";
+import authenticateMiddleware from "./middlewares/authenticateMiddleware";
 
 //Creating an express instance
 const app = express();
@@ -38,15 +41,16 @@ app.use(express.json())
 
     app.use(express.json()); is telling Express to use the express.json() middleware for all incoming requests, enabling the server to parse and access JSON data sent in the request body.
 */
+app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.send("API is running....")
 })
 
-app.get("/api/notes", (req, res) => {
+app.get("/api/notes", authenticateMiddleware, (req: Request, res: Response) => {
     res.json(notes);
 })
 

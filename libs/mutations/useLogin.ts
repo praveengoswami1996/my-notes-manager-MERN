@@ -8,9 +8,10 @@ const useLogin = () => {
     const login = useMutation({
         mutationFn: async (data: LoginFormValues) => {
             const response = await api.post("/users/login", data);
-            return response.data;
+            return response.data?.data;
         },
         onSuccess: (data) => {
+            console.log(data);
             toast.success("You are logged in successfully")
         },
         onError: (error: AxiosError) => {

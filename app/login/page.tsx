@@ -43,7 +43,7 @@ const LoginPage = () => {
                   placeholder={"Enter your email"}
                   label={"Email Address"}
                   onChange={onChange}
-                  value={value}
+                  value={value || ""}
                   error={errors.email?.message?.toString()}
                 />
               )}
@@ -62,7 +62,7 @@ const LoginPage = () => {
                   placeholder={"Enter your password"}
                   label={"Password"}
                   onChange={onChange}
-                  value={value}
+                  value={value || ""}
                   error={errors.password?.message?.toString()}
                 />
               )}

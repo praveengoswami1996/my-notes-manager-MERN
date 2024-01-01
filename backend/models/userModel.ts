@@ -1,7 +1,19 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcryptjs";
 
-const userSchema = mongoose.Schema(
+interface User {
+    name: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
+    avatar?: string;
+}
+
+interface UserWithMethods extends User {
+    matchPassword: (enteredPassword: string) => Promise<boolean>
+}
+
+const userSchema = new Schema<UserWithMethods>(
     {
         name: {
             type: String,
@@ -34,7 +46,7 @@ const userSchema = mongoose.Schema(
 )
 
 //Method for matching the password entered while logging in with the password stored in the Mongodb database.
-userSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword: string) {
     const user = this;
     return await bcrypt.compare(enteredPassword, user.password);
 };
@@ -54,7 +66,7 @@ userSchema.pre('save', async function (next) {
         const hashedPassword = await bcrypt.hash(user.password, salt);
         user.password = hashedPassword;
         next();
-    } catch(error) {
+    } catch(error: any) {
         next(error);
     }
 })
@@ -63,7 +75,7 @@ userSchema.pre('save', async function (next) {
 
 
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model<UserWithMethods>("User", userSchema);
 //Above line creates a Mongoose model named User based on the userSchema we defined above. This model will be used to interact with the MongoDB collection associated with users.
 
-module.exports = User;
+export default User;
