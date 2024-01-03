@@ -5,6 +5,7 @@ import Header from 'core/ui/Header';
 import Footer from 'core/ui/Footer';
 import TanstackProvider from '../providers/TanstackProvider';
 import { Toaster } from 'react-hot-toast';
+import StoreProvider from 'providers/StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,14 +18,18 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
   return (
     <html lang="en">
       <body className={inter.className}>
+        <StoreProvider>
         <Header />
         <Toaster />
         <TanstackProvider>
+        
           <main className="min-h-screen w-full bg-white px-20">
             { children }
           </main>
+        
         </TanstackProvider>
         <Footer />
+        </StoreProvider>
       </body>
     </html>
   )

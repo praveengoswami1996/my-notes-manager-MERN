@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const isLoggedIn = request.cookies.get('authToken')?.value;
-  const { pathname } = request.nextUrl
+  const { pathname } = request.nextUrl;
 
   if (!isLoggedIn && pathname === '/') {
     return null;
